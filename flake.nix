@@ -11,10 +11,14 @@
     ...
   }: flake-utils.lib.eachDefaultSystem (system: let
     pkgs = nixpkgs.legacyPackages.${system};
-  in {
+  in rec {
     packages = rec {
       minecraftServers.forge-1-20 = pkgs.callPackage ./packages/forge-server.nix {  };
       default = minecraftServers.forge-1-20;
+    };
+
+    overlays.default = prev: next: {
+      minecraftServers.forge-1-20 = packages.minecraftServers.forge-1-20;
     };
   });
 }

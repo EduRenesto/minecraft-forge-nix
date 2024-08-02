@@ -7,16 +7,13 @@
   version = "1.20.1-47.3.0";
   name = "forge-server-${version}";
 
-  src = fetchurl {
-    url = "https://maven.minecraftforge.net/net/minecraftforge/forge/${version}/forge-${version}-installer.jar";
-    hash = "sha256-YBirzpXMBYdo42WGX9fPO9MbXFUyMdr4hdw4X81th1o=";
-  };
+  src = ../jars/forge-${version}-installer-offline.jar;
 
   dontUnpack = true;
 
   buildPhase = ''
     mkdir -p $out
-    ${jre_headless}/bin/java -jar $src --installServer $out
+    ${jre_headless}/bin/java -jar $src --offline --installServer $out
   '';
 
   installPhase = ''

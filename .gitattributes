@@ -1,0 +1,2 @@
+jars/forge-1.20.1-47.3.0-installer-offline.jar filter=lfs diff=lfs merge=lfs -text
+*.jar filter=lfs diff=lfs merge=lfs -text

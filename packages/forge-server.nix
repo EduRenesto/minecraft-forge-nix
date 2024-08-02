@@ -7,7 +7,10 @@
   version = "1.20.1-47.3.0";
   name = "forge-server-${version}";
 
-  src = ../jars/forge-${version}-installer-offline.jar;
+  src = fetchurl {
+    url = "https://github.com/EduRenesto/minecraft-forge-nix/raw/main/jars/forge-${version}-installer-offline.jar";
+    hash = "sha256-JYQXqJpsHKv4KtoDZs6i+r9F4vnMR0IvFvqV9Pt913g=";
+  };
 
   dontUnpack = true;
 

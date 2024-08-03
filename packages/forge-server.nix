@@ -4,6 +4,7 @@
 , jre_headless
 , gnused
 , gnutar
+, bash
 }: stdenv.mkDerivation rec {
   version = "1.20.1-47.3.0";
   name = "forge-server-${version}";
@@ -26,6 +27,7 @@
 
     mkdir -p $out/bin
     cat > $out/bin/minecraft-server <<EOF
+      #!${bash}
       exec ${jre_headless}/bin/java \$@ -DlibraryDirectory="$out/libraries" @$out/libraries/net/minecraftforge/forge/${version}/unix_args.txt nogui
     EOF
 
